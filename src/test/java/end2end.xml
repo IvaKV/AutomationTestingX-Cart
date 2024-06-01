@@ -1,0 +1,43 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="End to End Suite" parallel="none">
+    <listeners>
+        <listener class-name="BaseTest"></listener>
+    </listeners>
+    <test name="End to End Test">
+        <classes>
+            <class name="RegistrationTest">
+                <methods>
+                    <include name="verifyRegistration"/>
+                    <exclude name="verifyDuplicateUserRegistrationFailure"/>
+                </methods>
+            </class>
+            <class name="LogInTest">
+                <methods>
+                    <include name="loggingInTest"/>
+                    <include name="verifyLogIn"/>
+                    <exclude name="verifyUnsuccessfulLogin"/>
+                </methods>
+            </class>
+            <class name="ChangeDetailsTest">
+                <methods>
+                    <exclude name="logInFirst"/>
+                    <include name="verifyChangeCountry"/>
+                </methods>
+            </class>
+            <class name="CartTest">
+                <methods>
+                    <exclude name="logInFirst"/>
+                    <include name="verifyAddItemToCart"/>
+                    <include name="verifyDeleteItemFromCart"/>
+                    <include name="verifyCheckout"/>
+                </methods>
+            </class>
+            <class name="ContactUsTest">
+                <methods>
+                    <exclude name="logInFirst"/>
+                    <include name="verifyContactUsMessage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
